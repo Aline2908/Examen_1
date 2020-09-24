@@ -8,4 +8,7 @@
     <string name="home_plus">Suma</string>
     <string name="home_subtraction">Resta</string>
     <string name="home_multiplication">Multiplicación</string>
+    <string name="home_value1">Valor 1</string>
+    <string name="home_value2">Valor 2</string>
+    <string name="home_button_calculate">Calcular</string>
 </resources>
