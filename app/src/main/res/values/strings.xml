@@ -4,4 +4,8 @@
     <string name="login_password">Password</string>
     <string name="login_button">Aceptar</string>
     <string name="login_welcome">¡Bienvenide!</string>
+    <string name="home_calculate">Calcular</string>
+    <string name="home_plus">Suma</string>
+    <string name="home_subtraction">Resta</string>
+    <string name="home_multiplication">Multiplicación</string>
 </resources>
