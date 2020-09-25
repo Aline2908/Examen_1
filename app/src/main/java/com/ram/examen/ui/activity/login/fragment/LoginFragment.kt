@@ -7,16 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.ram.examen.R
 import com.ram.examen.databinding.FragmentLoginBinding
+import com.ram.examen.ui.activity.login.LoginActivity
 
 class LoginFragment : Fragment() {
 
     lateinit var binding: FragmentLoginBinding
+    var textView: TextView? = null
 
-    var user: String = ""
+    var user: String = "Aline"
     var password: String = ""
     var isLogin: Boolean = true
 
@@ -42,6 +45,8 @@ class LoginFragment : Fragment() {
         }
         binding.buttonAccept.setOnClickListener { v ->
             Navigation.findNavController(v).navigate(R.id.welcomeFragment)
+            textView = requireActivity().findViewById(R.id.textview_user)
+            textView?.setText(binding.edittextUser.text.toString())
         }
     }
 
