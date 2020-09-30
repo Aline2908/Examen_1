@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import com.ram.examen.R
 import com.ram.examen.databinding.FragmentLoginBinding
 import com.ram.examen.di.UserInfo
@@ -41,11 +40,9 @@ class LoginFragment : Fragment() {
     }
 
     private fun initView() {
-        binding.apply {
-            buttonAccept.setOnClickListener { v ->
+            binding.buttonAccept.setOnClickListener { v ->
                 doLogin()
             }
-        }
     }
 
     private fun doLogin() {
