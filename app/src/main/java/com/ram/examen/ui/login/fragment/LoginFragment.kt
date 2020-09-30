@@ -1,5 +1,6 @@
-package com.ram.examen.ui.activity.login.fragment
+package com.ram.examen.ui.login.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,21 +8,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.ram.examen.R
 import com.ram.examen.databinding.FragmentLoginBinding
-import com.ram.examen.ui.activity.login.LoginActivity
+import com.ram.examen.di.UserInfo
 
 class LoginFragment : Fragment() {
 
     lateinit var binding: FragmentLoginBinding
-    var textView: TextView? = null
 
-    var user: String = "Aline"
-    var password: String = ""
-    var isLogin: Boolean = true
+    private var listener: LoginListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as? LoginListener
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,15 +41,22 @@ class LoginFragment : Fragment() {
     }
 
     fun initView() {
-        if (isLogin) {
-            binding.edittextUser.setText(user)
-            binding.edittextPassword.setText(password)
+        binding.apply {
+            edittextUser.setText("Aline")
+            edittextPassword.setText("")
+            buttonAccept.setOnClickListener { v ->
+//                Navigation.findNavController(v).navigate(R.id.welcomeFragment)
+                doLogin()
+            }
         }
-        binding.buttonAccept.setOnClickListener { v ->
-            Navigation.findNavController(v).navigate(R.id.welcomeFragment)
-            textView = requireActivity().findViewById(R.id.textview_user)
-            textView?.setText(binding.edittextUser.text.toString())
-        }
+    }
+
+    fun doLogin() {
+        val userInfo = UserInfo(
+            binding.edittextUser.text.toString(),
+            binding.edittextPassword.text.toString()
+        )
+        listener?.onDoLogin(userInfo)
     }
 
     fun onTextChange() {
@@ -64,25 +73,23 @@ class LoginFragment : Fragment() {
                 after: Int
             ) {
             }
+
             override fun onTextChanged(
                 s: CharSequence,
                 start: Int,
                 before: Int,
                 count: Int
             ) {
-                if (isLogin) {
-                    if (binding.edittextUser.getText().toString().trim().length == 5
-                        && binding.edittextPassword.getText().toString().trim()
-                            .length == 4
-                    ) {
-                        changeBackground(true)
-                    } else {
-                        changeBackground(false)
-                    }
+                if (binding.edittextUser.getText().toString().trim().length == 5
+                    && binding.edittextPassword.getText().toString().trim()
+                        .length == 4
+                ) {
+                    changeBackground(true)
                 } else {
                     changeBackground(false)
                 }
             }
+
             override fun afterTextChanged(s: Editable) {}
         })
     }
@@ -95,6 +102,10 @@ class LoginFragment : Fragment() {
             binding.buttonAccept.background = resources.getDrawable(R.drawable.bg_button_disabled)
             binding.buttonAccept.isEnabled = false
         }
+    }
+
+    interface LoginListener {
+        fun onDoLogin(userInfo: UserInfo)
     }
 
 }

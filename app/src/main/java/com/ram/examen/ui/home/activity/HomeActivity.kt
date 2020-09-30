@@ -1,4 +1,4 @@
-package com.ram.examen.ui.activity.home
+package com.ram.examen.ui.home.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
