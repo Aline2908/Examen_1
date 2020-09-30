@@ -7,12 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.ram.examen.databinding.FragmentWelcomeBinding
 import com.ram.examen.ui.home.activity.HomeActivity
 
 class WelcomeFragment : Fragment() {
 
     lateinit var binding: FragmentWelcomeBinding
+
+    private val args: WelcomeFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +29,11 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         launchHome()
+        setValues()
+    }
+
+    private fun setValues() {
+        binding.textviewUser.text = args.userInfo.userName
     }
 
     fun launchHome() {

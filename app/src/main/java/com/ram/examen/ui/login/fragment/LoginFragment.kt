@@ -40,18 +40,15 @@ class LoginFragment : Fragment() {
         onTextChange()
     }
 
-    fun initView() {
+    private fun initView() {
         binding.apply {
-            edittextUser.setText("Aline")
-            edittextPassword.setText("")
             buttonAccept.setOnClickListener { v ->
-//                Navigation.findNavController(v).navigate(R.id.welcomeFragment)
                 doLogin()
             }
         }
     }
 
-    fun doLogin() {
+    private fun doLogin() {
         val userInfo = UserInfo(
             binding.edittextUser.text.toString(),
             binding.edittextPassword.text.toString()
@@ -59,12 +56,12 @@ class LoginFragment : Fragment() {
         listener?.onDoLogin(userInfo)
     }
 
-    fun onTextChange() {
+    private fun onTextChange() {
         initChangeListener(binding.edittextUser)
         initChangeListener(binding.edittextPassword)
     }
 
-    fun initChangeListener(editText: EditText) {
+    private fun initChangeListener(editText: EditText) {
         editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 s: CharSequence,
@@ -94,7 +91,7 @@ class LoginFragment : Fragment() {
         })
     }
 
-    fun changeBackground(isOn: Boolean) {
+    private fun changeBackground(isOn: Boolean) {
         if (isOn) {
             binding.buttonAccept.background = resources.getDrawable(R.drawable.bg_button)
             binding.buttonAccept.isEnabled = true
