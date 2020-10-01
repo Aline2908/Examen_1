@@ -74,7 +74,7 @@ class LoginFragment : Fragment() {
                 before: Int,
                 count: Int
             ) {
-                if (binding.edittextUser.getText().toString().trim().length == 5
+                if (binding.edittextUser.getText().toString().trim().length <= 15
                     && binding.edittextPassword.getText().toString().trim()
                         .length == 4
                 ) {
