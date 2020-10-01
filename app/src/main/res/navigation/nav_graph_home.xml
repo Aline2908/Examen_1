@@ -18,5 +18,21 @@
         android:id="@+id/calculateFragment"
         android:name="com.ram.examen.ui.home.fragment.CalculateFragment"
         android:label="CalculateFragment"
-        tools:layout="@layout/fragment_calculate"/>
+        tools:layout="@layout/fragment_calculate">
+        <action
+            android:id="@+id/action_calculateFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+        <argument
+            app:argType="integer"
+            android:name="operation"/>
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.ram.examen.ui.home.fragment.ResultFragment"
+        android:label="ResultFragment"
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/action_resultFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

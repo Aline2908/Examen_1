@@ -34,7 +34,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/bg_button_operations"
-            android:text="@string/home_plus"
+            android:text="@string/home_sum"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

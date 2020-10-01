@@ -1,5 +1,6 @@
 package com.ram.examen.ui.home.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,20 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.ram.examen.R
 import com.ram.examen.databinding.FragmentHomeBinding
+import com.ram.examen.di.Calculate
+import com.ram.examen.ui.home.activity.HomeActivity
+import com.ram.examen.ui.login.fragment.LoginFragment
 
 class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
+
+    private var listener: HomeListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as? HomeListener
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,19 +35,22 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initOnClickListener()
+        initClickListener()
     }
 
-    fun initOnClickListener() {
+    fun initClickListener() {
         binding.buttonPlus.setOnClickListener { v ->
-
-            Navigation.findNavController(v).navigate(R.id.calculateFragment)
+            listener?.onDoCalculate(HomeActivity.SUM)
         }
         binding.buttonSubtraction.setOnClickListener { v ->
-            Navigation.findNavController(v).navigate(R.id.calculateFragment)
+            listener?.onDoCalculate(HomeActivity.SUBTRACTION)
         }
         binding.buttonMultiplication.setOnClickListener { v ->
-            Navigation.findNavController(v).navigate(R.id.calculateFragment)
+            listener?.onDoCalculate(HomeActivity.MULTIPLICATION)
         }
+    }
+
+    interface HomeListener {
+        fun onDoCalculate(calculate: Int)
     }
 }

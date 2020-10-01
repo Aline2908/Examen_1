@@ -5,11 +5,13 @@
     <string name="login_button">Aceptar</string>
     <string name="login_welcome">¡Bienvenide!</string>
     <string name="home_calculate">Calcular</string>
-    <string name="home_plus">Suma</string>
+    <string name="home_sum">Suma</string>
     <string name="home_subtraction">Resta</string>
     <string name="home_multiplication">Multiplicación</string>
     <string name="home_value1">Valor 1</string>
     <string name="home_value2">Valor 2</string>
-    <string name="home_button_calculate">Calcular</string>
+    <string name="home_button_calculate_sum">Calcular Suma</string>
+    <string name="home_button_calculate_subtraction">Calcular Resta</string>
+    <string name="home_button_calculate_multiplication">Calcular Multiplicación</string>
     <string name="home_greeting">¡Hola! \nTu resultado es:</string>
 </resources>

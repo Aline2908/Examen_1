@@ -6,12 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
+import com.ram.examen.R
 import com.ram.examen.databinding.FragmentCalculateBinding
+import com.ram.examen.ui.home.activity.HomeActivity
 
 class CalculateFragment : Fragment() {
 
     lateinit var binding: FragmentCalculateBinding
 
+    private val args: CalculateFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,22 +28,29 @@ class CalculateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        calculate()
-        calculatePlus()
+        initClickListener()
+        updateCopies()
     }
 
-    fun calculate() {
+    fun initClickListener() {
         binding.buttonCalculate.setOnClickListener { v ->
             showError()
         }
     }
 
-    fun calculatePlus() {
-        var x = 2.1
-        var y = 3
-        //Área de una esfera
-        //4*PI*r2
-        System.out.println(4 * Math.PI * Math.pow(x, 2.0))
+    fun updateCopies() {
+        val operation = args.operation
+        when (operation) {
+            HomeActivity.SUM -> {
+               binding.buttonCalculate.text = resources.getString(R.string.home_button_calculate_sum)
+            }
+            HomeActivity.SUBTRACTION -> {
+                binding.buttonCalculate.text = resources.getString(R.string.home_button_calculate_subtraction)
+            }
+            HomeActivity.MULTIPLICATION -> {
+                binding.buttonCalculate.text = resources.getString(R.string.home_button_calculate_multiplication)
+            }
+        }
     }
 
     fun showError() {
