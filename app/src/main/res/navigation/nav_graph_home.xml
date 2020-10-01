@@ -34,5 +34,8 @@
         <action
             android:id="@+id/action_resultFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            app:argType="com.ram.examen.di.Result"
+            android:name="result"/>
     </fragment>
 </navigation>

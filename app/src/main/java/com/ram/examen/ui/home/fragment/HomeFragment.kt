@@ -6,12 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import com.ram.examen.R
 import com.ram.examen.databinding.FragmentHomeBinding
-import com.ram.examen.di.Calculate
 import com.ram.examen.ui.home.activity.HomeActivity
-import com.ram.examen.ui.login.fragment.LoginFragment
 
 class HomeFragment : Fragment() {
 
